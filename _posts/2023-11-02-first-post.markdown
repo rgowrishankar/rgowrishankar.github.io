@@ -1,11 +1,9 @@
 ---
 layout: post
-title:  "First Post!"
+title:  "Hello There!"
 date:   2023-11-02 17:50:38 -0400
 categories: general
 ---
-
-# Hello Hello!
 
 As a developer navigating the ever-changing landscape of Software Development, I decided to try to pull myself by my boots, buckle down, batten down the hatches, ignore the piling house work (only for a bit) and start a series of pages and blog posts.
 
