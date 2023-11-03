@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Hello There!"
 date:   2023-11-02 17:50:38 -0400
 categories: general

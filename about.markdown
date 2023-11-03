@@ -1,10 +1,10 @@
 ---
-layout: page
-title: About Me
-permalink: /about/
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: default
 ---
 
-Software developer trying to navigate the ever-changing world of Software Development. 
+# Hello There!
 
-
-Mandatory Disclaimer: Anything in this site (view/work) are mine alone and are not associated with my employer in any form or fashion.
+Software Developer/jack of all trades here. Started this to document some thoughts/learnings/experiments. Hope someone somewhere finds it useful.
