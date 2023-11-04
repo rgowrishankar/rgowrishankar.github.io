@@ -1,0 +1,25 @@
+---
+layout: default
+title: Simple Calculator to add 2 numbers
+---
+
+<script>
+  function addNums() {
+    var n1= parseInt(document.getElementById("firstNum").value);
+    var n2= parseInt(document.getElementById("secondNum").value);
+    var result = n1+n2;
+    var resText = "Result of Addition= " + result;
+    document.getElementById("resOfAddition").innerHTML = resText; 
+}
+</script>
+
+<h1>Number Addition</h1>
+
+ <form>
+  <label for="firstNum">First Number:</label>
+  <input type="text" id="firstNum" name="firstNum"><br>
+  <label for="secondNum">Second Number:</label>
+  <input type="text" id="secondNum" name="secondNum"><br>
+  <input type = "button" onclick = "addNums()" value = "Submit">
+  <div id="resOfAddition"></div>
+</form>
