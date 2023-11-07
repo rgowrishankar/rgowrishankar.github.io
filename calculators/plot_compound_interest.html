@@ -7,5 +7,11 @@ title: Simple Calculator to add 2 numbers
 <h1>Compound Interest Calculator</h1>
 <canvas id="myCIChart" style="width:100%;max-width:700px"></canvas>
 <script type="text/javascript" src="/assets/js/compound_interest.js"></script> 
+<form>
+  <label for="firstNum">First Number:</label>
+  <input type="text" id="firstNum" name="firstNum"><br>
+  <label for="secondNum">Second Number:</label>
+  <input type="text" id="secondNum" name="secondNum"><br>
+  <input type = "button" onclick = "plotNums()" value = "Submit">
+</form>
 
-<button id="0" type="button">Calculate</button>
