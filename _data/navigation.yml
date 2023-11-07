@@ -6,3 +6,5 @@
   link: /blog.html
 - name: Calculators
   link: /calculators/main.html
+- name: Charts
+  link: /charts/main.html
