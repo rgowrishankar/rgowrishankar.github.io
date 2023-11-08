@@ -5,8 +5,8 @@ var data = {
     label: 'Compound Interest Bar Chart',
     data: [],
     borderWidth: 1,
-    borderColor: '#FF6384',
-    backgroundColor: '#FFB1C1',
+    borderColor: 'blue',
+    backgroundColor: 'blue',
     ticks: {
       beginAtZero: true
     }
@@ -22,11 +22,11 @@ const config = {
         beginAtZero: true,
         min: 0,
         display: true,
-        color: '#FF6384',
+        color: 'red',
         grid: {
-          color: '#36a2eb',
-          borderColor: '#36a2eb',
-          tickColor: '#36a2eb'
+          color: 'red',
+          borderColor: 'red',
+          tickColor: 'red'
         },
         ticks: {
           beginAtZero: true
