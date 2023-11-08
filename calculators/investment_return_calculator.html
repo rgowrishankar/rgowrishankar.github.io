@@ -1,0 +1,49 @@
+---
+layout: default
+title: Return on investment calculator
+---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.1/chart.js"> </script>
+<h1>Return on Investment Calculator</h1>
+This investment calculator calculates the return on investment if: <br>
+<ol>
+<li>You don't withdraw any money. In this case, it just becomes a compound interest calculator </li>
+<li> You withdraw money at a certain stage. This gives you a better idea of how long the investment money will last. </li>
+</ol>
+
+The inputs to the calculator are: <br>
+<ol>
+<li>Number of Years to calculate: Number of years to run the evaluation for. Year 0 will be current year, so if you want to calculate returns for the next 60 years enter 60 in this field.</li>
+<li>Interest Rate: Enter the interest rate or the return rate on the investment that you would like to use. For example, over the past 30 years the stock market return was 7%. So you would enter 7 in this field. The interest rate is the Annual Interest Rate and gains are calculated once a year.</li>
+<li>Initial Balance: If you already have money in your account (like a 401k balance), enter it in this field. If you want to take into account only new contributions, set this to 0. </li>
+<li>Annual Contribution: How much money you want to contribute on an Annual basis. </li>
+<li>Number of Years to contribute: Enter how long you will contribute money to the account. Example: 20 for 20 years. This will typically be the age you want to retire and stop contributing.</li>
+<li>Number of Years left to start withdrawal: Enter how many years are left to start the withdrawal. For example, if are going to retire in 20 years and will start withdrawing in 20 years, enter 20. You can enter a different number from the number of years left to retirement for early/late withdrawals.</li>
+<li>Withdrawal Amount: The amount you will withdraw annually. Give it in today's dollars and use the inflation rate field to take care of how much it would mean in the future. The withdrawal will get taken into account based on the "Number of Years left to start withdrawal" field.</li>
+<li>Inflation Rate: Average inflation rate to use to calculate the how much you will need to withdraw each year to maintain purchasing power parity with the amount entered in "Withdrawal Amount" field</li>
+</ol> 
+
+
+
+<canvas id="myCIChart" style="width:100%;max-width:1600px"></canvas>
+<script type="text/javascript" src="/assets/js/bar_compound_interest.js"></script> 
+
+<form>
+  <label for="numYears">Number of Years to calculate:</label>
+  <input type="text" id="numYears" name="numYears"><br>
+  <label for="interestRate">Interest Rate:</label>
+  <input type="text" id="interestRate" name="interestRate"><br>
+  <label for="initialBalance">Initial Balance:</label>
+  <input type="text" id="initialBalance" name="initialBalance"><br>
+  <label for="annualContribution">Annual Contribution:</label>
+  <input type="text" id="annualContribution" name="annualContribution"><br>
+  <label for="numYearsContrib">Number of Years to contribute:</label>
+  <input type="text" id="numYearsContrib" name="numYearsContrib"><br>
+  <label for="numYearsToStartWithdraw">Number of Years left to start withdrawal:</label>
+  <input type="text" id="numYearsToStartWithdraw" name="numYearsToStartWithdraw"><br>
+  <label for="withdrawalAmount">Withdrawal Amount:</label>
+  <input type="text" id="withdrawalAmount" name="withdrawalAmount"><br>
+  <label for="inflationRate">Inflation Rate:</label>
+  <input type="text" id="inflationRate" name="inflationRate"><br>
+  <input type = "button" onclick = "plotNums()" value = "Submit">
+</form>
+
