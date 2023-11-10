@@ -1,0 +1,83 @@
+---
+layout: default
+title: Return on investment calculator
+---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.1/chart.js"> </script>
+<h1>Return on Investment Calculator</h1>
+This is written using client-side JavaScript and I don't collect or store any inputs to this page.<br>
+This investment calculator calculates the return on investment if: <br>
+<ol>
+<li>You don't withdraw any money. In this case, it just becomes a compound interest calculator </li>
+<li> You withdraw money at a certain stage. This gives you a better idea of how long the investment money will last. </li>
+</ol>
+
+The inputs to the calculator are: <br>
+<ol>
+<li>Number of Years to calculate: Number of years to run the evaluation for. Year 0 will be current year, so if you want to calculate returns for the next 60 years enter 60 in this field.</li>
+<li>Interest Rate in growth stage: Enter the interest rate or the return rate on the investment that you would like to use in accumulation phase. This is typically a more aggresive rate. For example, over the past 30 years the stock market return was 7%. So you would enter 7 in this field. The interest rate is the Annual Interest Rate and gains are calculated once a year.</li>
+<li>Pre Tax Initial Balance: If you already have money in your pre-tax account (like a 401k or IRA balance), enter it in this field. If you want to take into account only new contributions, set this to 0. </li>
+<li>Annual Contribution Pre Tax: How much money you want to contribute on an Annual basis to your pre-tax account. </li>
+<li>Roth Initial Balance: If you already have money in your Roth account (like a roth 401k or roth IRA balance), enter it in this field. If you want to take into account only new contributions, set this to 0. </li>
+<li>Annual Contribution Roth: How much money you want to contribute on an Annual basis to your roth account. </li>
+<li>Number of Years to contribute: Enter how long you will contribute money to the account. Example: 20 for 20 years. This will typically be the age you want to retire and stop contributing.</li>
+<li>Number of Years left to start withdrawal: Enter how many years are left to start the withdrawal. For example, if are going to retire in 20 years and will start withdrawing in 20 years, enter 20. You can enter a different number from the number of years left to retirement for early/late withdrawals.</li>
+<li>Withdrawal Amount Pre Tax: The amount you will withdraw annually from pre-tax. Give it in today's dollars and use the inflation rate field to take care of how much it would mean in the future. The withdrawal will get taken into account based on the "Number of Years left to start withdrawal" field. Input the amount of dollars you need, tax rate is used to automatically calculate the amount you will have to withdraw to cover the tax liability</li>
+<li>Withdrawal Amount Roth: The amount you will withdraw annually from Roth. Give it in today's dollars and use the inflation rate field to take care of how much it would mean in the future. The withdrawal will get taken into account based on the "Number of Years left to start withdrawal" field.</li>
+<li>Inflation Rate: Average inflation rate to use to calculate the how much you will need to withdraw each year to maintain purchasing power parity with the amount entered in "Withdrawal Amount" field</li>
+<li>Tax Rate: The tax rate to use for withdrawal from pre-tax accounts. The net amount to be withdrawn from the pre-tax account will be calculated based on the "Withdrawal Amount Pre Tax" field and the tax rate </li>
+</ol> 
+
+
+<h3> Chart plotting growth of Account Balance with and without withdrawals </h3>
+<canvas id="myCIChart" style="width:100%;max-width:1600px"></canvas>
+<h3> Chart plotting Account Balance and Amount Withdrawn every year </h3>
+<canvas id="mySpendingChart" style="width:100%;max-width:1600px"></canvas>
+<h3> Chart plotting Pre-Tax Account Balance and Pre-Tax Amount Withdrawn every year </h3>
+<canvas id="myPreTaxSpendingChart" style="width:100%;max-width:1600px"></canvas>
+<h3> Chart plotting Roth Account Balance and Amount Withdrawn every year from Roth </h3>
+<canvas id="myRothSpendingChart" style="width:100%;max-width:1600px"></canvas>
+<script type="text/javascript" src="/assets/js/retirement_calc.js"></script> 
+
+<form>
+  <label for="numYears">Number of Years to calculate:</label>
+  <input type="text" id="numYears" name="numYears"><br>
+  
+  <label for="interestRate">Yield (annual return percentage) in growth stage:</label>
+  <input type="text" id="interestRate" name="interestRate"><br>
+  
+  <label for="interestRateLater">Yield (annual return percentage) in withdrawal stage:</label>
+  <input type="text" id="interestRateLater" name="interestRateLater"><br>
+  
+  <label for="initialBalancePreTax">Initial Balance in Pre Tax Accounts:</label>
+  <input type="text" id="initialBalancePreTax" name="initialBalancePreTax"><br>
+  
+  <label for="annualContributionPreTax">Annual Pre Tax Contribution:</label>
+  <input type="text" id="annualContributionPreTax" name="annualContributionPreTax"><br>
+  
+  <label for="initialBalanceRoth">Initial Balance in Roth Accounts:</label>
+  <input type="text" id="initialBalanceRoth" name="initialBalanceRoth"><br>
+  
+  <label for="annualContributionRoth">Annual Roth Contribution:</label>
+  <input type="text" id="annualContributionRoth" name="annualContributionRoth"><br>
+   
+  <label for="numYearsContrib">Number of Years to contribute:</label>
+  <input type="text" id="numYearsContrib" name="numYearsContrib"><br>
+  
+  <label for="numYearsToStartWithdraw">Number of Years left to start withdrawal:</label>
+  <input type="text" id="numYearsToStartWithdraw" name="numYearsToStartWithdraw"><br>
+
+  <label for="withdrawalAmountPreTax">Annual Amount to withdraw from pre-tax:</label>
+  <input type="text" id="withdrawalamountPreTax" name="withdrawalamountPreTax"><br>
+  
+  <label for="withdrawalAmountRoth">Annual Amount to withdraw from roth:</label>
+  <input type="text" id="withdrawalamountRoth" name="withdrawalamountRoth"><br>
+  
+  <label for="inflationrate">inflation rate:</label>
+  <input type="text" id="inflationRate" name="inflationRate"><br>
+  
+  <label for="taxRate">Tax Rate for Pre-tax withdrawal:</label>
+  <input type="text" id="taxRate" name="taxRate"><br>
+  
+  <input type = "button" onclick = "plotNums()" value = "Submit">
+</form>
+
