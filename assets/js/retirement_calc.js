@@ -198,8 +198,8 @@ spendingRothChart.update()
 function plotNums(){
   var numYears= parseInt(document.getElementById("numYears").value);
 
-  var interestRateGrowthStage= parseInt(document.getElementById("interestRate").value);
-  var interestRateWithdrawalStage= parseInt(document.getElementById("interestRateLater").value);
+  var interestRateGrowthStage= parseFloat(document.getElementById("interestRate").value);
+  var interestRateWithdrawalStage= parseFloat(document.getElementById("interestRateLater").value);
 
   var initialBalancePreTax = parseInt(document.getElementById("initialBalancePreTax").value);
   var annualContributionPreTax = parseInt(document.getElementById("annualContributionPreTax").value);
@@ -214,8 +214,8 @@ function plotNums(){
   var withdrawalAmountPreTax = parseInt(document.getElementById("withdrawalamountPreTax").value);
   var withdrawalAmountRoth = parseInt(document.getElementById("withdrawalamountRoth").value);
  
-  var inflationRate = parseInt(document.getElementById("inflationRate").value);
-  var taxRate = parseInt(document.getElementById("taxRate").value);
+  var inflationRate = parseFloat(document.getElementById("inflationRate").value);
+  var taxRate = parseFloat(document.getElementById("taxRate").value);
   console.log("taxRate:", taxRate);
  
   var labelArray=Array.from({ length: numYears+1 }, (value, index) => index);
