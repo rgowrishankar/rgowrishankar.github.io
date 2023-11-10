@@ -139,7 +139,7 @@ const configSpending = {
 };
 const configSpendingPreTax = {
   type: 'bar',
-  data: data2,
+  data: data3,
   options: {
     scales: {
       y: {
@@ -161,7 +161,7 @@ const configSpendingPreTax = {
 };
 const configSpendingRoth = {
   type: 'bar',
-  data: data2,
+  data: data4,
   options: {
     scales: {
       y: {
@@ -216,6 +216,7 @@ function plotNums(){
  
   var inflationRate = parseInt(document.getElementById("inflationRate").value);
   var taxRate = parseInt(document.getElementById("taxRate").value);
+  console.log("taxRate:", taxRate);
  
   var labelArray=Array.from({ length: numYears+1 }, (value, index) => index);
   ciChart.data.labels=labelArray;
@@ -240,27 +241,32 @@ function plotNums(){
 }
 
 function calculate_return(initialBalancePreTax, annualContributionPreTax, initialBalanceRoth, annualContributionRoth, interestRateGrowthStage, interestRateWithdrawalStage,  numYears, numYearsToContrib, numYearsToStartWithdraw, withdrawalAmountPreTax, withdrawalAmountRoth, inflationRate, taxRate) {
-  let result=[initialBalancePreTax+initialBalanceRoth];
+  let result=[];
   let currentBalance=initialBalancePreTax+initialBalanceRoth;
   let currentBalancePreTax=initialBalancePreTax;
   let currentBalanceRoth=initialBalanceRoth;
   let inflatedWithdrawalAmountPreTax = withdrawalAmountPreTax;
   let inflatedWithdrawalAmountRoth = withdrawalAmountRoth;
   for (let i = 0; i < numYears; i++) {
-    inflatedWithdrawalAmountPreTax = (withdrawalAmountPreTax*(1 + (inflationRate/100)));
-    inflatedWithdrawalAmountRoth = withdrawalAmountRoth *(1 + (inflationRate/100));
-    if (i >= numYearsToStartWithdraw) {
-      inflatedActualPreTax = inflatedWithdrawalAmountPreTax*100/(100-taxRate);
-      currentBalance = currentBalance - inflatedWithdrawalAmountRoth - inflatedActualPreTax;
-      currentBalancePreTax = currentBalancePreTax - inflatedActualPreTax;
-      currentBalanceRoth = currentBalanceRoth -inflatedWithdrawalAmountRoth;
-    }
-    if (i <= numYearsToContrib) {
+    inflatedWithdrawalAmountPreTax = (inflatedWithdrawalAmountPreTax*(1 + (inflationRate/100)));
+    inflatedWithdrawalAmountRoth = inflatedWithdrawalAmountRoth *(1 + (inflationRate/100));
+    console.log("PreTax withdrawal before tax:", inflatedWithdrawalAmountPreTax);
+    if (i < numYearsToContrib) {
       currentBalancePreTax = (currentBalancePreTax*(1+(interestRateGrowthStage/100)))+annualContributionPreTax;
       currentBalanceRoth = (currentBalanceRoth*(1+(interestRateGrowthStage/100)))+annualContributionRoth;
       currentBalance=currentBalancePreTax + currentBalanceRoth;
     } else {
       currentBalance = (currentBalance*(1+(interestRateWithdrawalStage/100)));
+    }
+    console.log("currentBalance:", currentBalance)
+    if (i >= numYearsToStartWithdraw) {
+      inflatedActualPreTax = inflatedWithdrawalAmountPreTax*100/(100-taxRate);
+      console.log("PreTax withdrawal before tax:", inflatedWithdrawalAmountPreTax);
+      console.log("PreTax withdrawal:", inflatedActualPreTax);
+      currentBalance = currentBalance - (inflatedWithdrawalAmountRoth + inflatedActualPreTax);
+      currentBalancePreTax = currentBalancePreTax - inflatedActualPreTax;
+      currentBalanceRoth = currentBalanceRoth -inflatedWithdrawalAmountRoth;
+      console.log("currentBalance after withdrawal:", currentBalance)
     }
     result.push(currentBalance);
   }
