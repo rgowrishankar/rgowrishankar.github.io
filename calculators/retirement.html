@@ -5,10 +5,10 @@ title: Return on investment calculator
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.1/chart.js"> </script>
 <h1>Return on Investment Calculator</h1>
 This is written using client-side JavaScript and I don't collect or store any inputs to this page.<br>
-This investment calculator calculates the return on investment if: <br>
+This investment calculator calculates how your money grows over time and how withdrawals will affect the balance in the accounts. It separates out pre-tax and Roth investments. It also calculates tax on withdrawals from pre-tax account.<br>
 <ol>
-<li>You don't withdraw any money. In this case, it just becomes a compound interest calculator </li>
-<li> You withdraw money at a certain stage. This gives you a better idea of how long the investment money will last. </li>
+<li>Pre-tax fields: Use these to input data regarding your pre-tax bucket like pre-tax 401k or pre-tax IRA. </li>
+<li> Roth fields: Use these to input data regarding your tax-free bucket like Roth 401k and Roth IRA </li>
 </ol>
 
 The inputs to the calculator are: <br>
@@ -24,9 +24,11 @@ The inputs to the calculator are: <br>
 <li>Withdrawal Amount Pre Tax: The amount you will withdraw annually from pre-tax. Give it in today's dollars and use the inflation rate field to take care of how much it would mean in the future. The withdrawal will get taken into account based on the "Number of Years left to start withdrawal" field. Input the amount of dollars you need, tax rate is used to automatically calculate the amount you will have to withdraw to cover the tax liability</li>
 <li>Withdrawal Amount Roth: The amount you will withdraw annually from Roth. Give it in today's dollars and use the inflation rate field to take care of how much it would mean in the future. The withdrawal will get taken into account based on the "Number of Years left to start withdrawal" field.</li>
 <li>Inflation Rate: Average inflation rate to use to calculate the how much you will need to withdraw each year to maintain purchasing power parity with the amount entered in "Withdrawal Amount" field</li>
-<li>Tax Rate: The tax rate to use for withdrawal from pre-tax accounts. The net amount to be withdrawn from the pre-tax account will be calculated based on the "Withdrawal Amount Pre Tax" field and the tax rate </li>
-</ol> 
+<li>Tax Rate: The tax rate to use for withdrawal from pre-tax accounts. The net amount to be withdrawn from the pre-tax account will be calculated based on the "Withdrawal Amount Pre Tax" field and the tax rate. The tax will come out of the pre-tax bucket.</li>
+</ol> <br>
 
+You can use this link from Vanguard to decide what rate of return to use for the growth stage when you are actively contributing money to the accounts versus retirement stage when you are more concerned about capital preservation: <br>
+<a href="https://advisors.vanguard.com/VGApp/iip/advisor/csa/analysisTools/portfolioAnalytics/historicalRiskReturn">Vanguard historical index risk/return</a><br>
 
 <h3> Chart plotting growth of Account Balance with and without withdrawals </h3>
 <canvas id="myCIChart" style="width:100%;max-width:1600px"></canvas>
